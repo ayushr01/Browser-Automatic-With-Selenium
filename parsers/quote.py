@@ -1,5 +1,6 @@
 from locators.quote_locators import QuoteLocators
 
+
 class QuoteParser:
     def __init__(self, parent):
         self.parent = parent
@@ -22,5 +23,5 @@ class QuoteParser:
     @property
     def tag(self):
         locator = QuoteLocators.TAGS
-        return self.parent.find_elements_by_css_selector(locator).text # We use elements because it has more than one result in the page
- 
+        return self.parent.find_elements_by_css_selector(
+            locator).text  # We use elements because it has more than one result in the page
