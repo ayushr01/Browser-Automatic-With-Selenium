@@ -1,10 +1,13 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 
 from pages.quotes_page import QuotesPage, InvalidTagForAuthorError, InvalidAuthorError
 
-chrome = webdriver.Chrome(executable_path='/Users/ayushrao/chromedriver')
-chrome.get("http://quotes.toscrape.com/search.aspx")  # We are using the chrome driver here instead of requests
-page = QuotesPage(chrome)
+driverservice = Service('/Users/ayushrao/chromedriver')
+browser = webdriver.Chrome(service=driverservice)
+
+browser.get("http://quotes.toscrape.com/search.aspx")  # We are using the chrome driver here instead of requests
+page = QuotesPage(browser)
 
 try:
     print(page.search_for_quotes())
